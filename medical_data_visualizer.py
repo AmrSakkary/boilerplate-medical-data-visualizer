@@ -19,7 +19,12 @@ def overweight_function(x):
 df['overweight'] = df.bmi.apply(lambda x :overweight_function(x))
 
 # Normalize data by making 0 always good and 1 always bad. If the value of 'cholesterol' or 'gluc' is 1, make the value 0. If the value is more than 1, make the value 1.
-
+def norm_data(x):
+    if x == 1:
+        return 0
+    else: return 1
+df.cholesterol = df.cholesterol.apply(lambda x :norm_data(x))
+df.gluc = df.gluc.apply(lambda x :norm_data(x))
 
 # Draw Categorical Plot
 def draw_cat_plot():
